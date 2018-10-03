@@ -1,0 +1,12 @@
+Source: lliurex-abies2pmb
+Section: admin
+Priority: optional
+Maintainer: Equipo LliureX <lliurex@gva.es>
+Uploaders: Juanra Pelegrina <juapesai@hotmail.com>, Juanma Navarro <juanma1980@gmail.com>
+Build-Depends: debhelper (>=9),llxsrchelper,llxcfg-dev
+Standards-Version: 3.9.3
+
+Package: lliurex-abies2pmb
+Architecture: all
+Depends:${misc:Depends}, mysql-tuneup(>=0.2), mdbtools
+Description: Imports abies mdb to pmb 
