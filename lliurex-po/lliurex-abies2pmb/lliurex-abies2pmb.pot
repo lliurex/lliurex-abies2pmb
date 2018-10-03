@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-11 16:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:313
+msgid "Error: No file upload to convert"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:316
+msgid "Error: File with incorret extension .mdb is required"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:319
+msgid "Error: Unable to detect file extension"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:322
+msgid "Error: Output path is not owned by user"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:325
+msgid "Conversion successful"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:328
+msgid "Error: Table not found in input file"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:331
+msgid "Error: Problem ocurred while importing input file"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:334
+msgid "Error: Problem exporting input file to csv"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:337
+msgid "Error: Problem generating intermediate sql file"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:340
+msgid "Error: Problem generating output file"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:343
+msgid "Error: No table in input file to virtual table"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:346
+msgid "Error: Couldn't fetch data from table"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:23
+msgid "Processing file..."
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:69
+msgid "Choose the file to convert or drag here:"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:115
+msgid "File to convert:"
+msgstr ""
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:157
+msgid "Output folder: "
+msgstr ""

@@ -1,0 +1,85 @@
+# Spanish translations for lliurex-abies package
+# Traducciones al español para el paquete lliurex-abies.
+# Copyright (C) 2017 THE lliurex-abies'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lliurex-abies package.
+# lliurex <lliurex@gva.es>, 2017.
+# Jose A. Murcia <joamruan@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: lliurex-abies 2pmb\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-11 16:20+0200\n"
+"PO-Revision-Date: 2017-04-26 10:38+0200\n"
+"Last-Translator: Jose A. Murcia <joamruan@gmail.com>\n"
+"Language-Team: LliureX\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:313
+msgid "Error: No file upload to convert"
+msgstr "Error: No s'ha pujar cap fitxer per convertir"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:316
+msgid "Error: File with incorret extension .mdb is required"
+msgstr "Error: Es requereix un fitxer amb l'extensió .mdb"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:319
+msgid "Error: Unable to detect file extension"
+msgstr "Error: No s'ha detectat l'extensió de fitxer"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:322
+msgid "Error: Output path is not owned by user"
+msgstr "Error: El camí d'eixida no pertany a l'usuari"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:325
+msgid "Conversion successful"
+msgstr "La conversió s'ha realitzat correctament"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:328
+msgid "Error: Table not found in input file"
+msgstr "Error: No s'ha trobat la taula en el fitxer d'entrada"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:331
+msgid "Error: Problem ocurred while importing input file"
+msgstr "Error: S'ha produït un problema en importar el fitxer d'entrada"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:334
+msgid "Error: Problem exporting input file to csv"
+msgstr "Error: S'ha produït un problema en exportar el fitxer d'entrada a csv"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:337
+msgid "Error: Problem generating intermediate sql file"
+msgstr "Error: S'ha produït un problema en generar el fitxer sql intermedi"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:340
+msgid "Error: Problem generating output file"
+msgstr "Error: S'ha produït un problema en generar el fitxer d'eixida"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:343
+msgid "Error: No table in input file to virtual table"
+msgstr ""
+"Error: No s'ha trobat cap taula en el fitxer d'entrada cap a la taula virtual"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/ConvertBox.py:346
+msgid "Error: Couldn't fetch data from table"
+msgstr "Error: No s'han pogut obtindre dades des de la taula"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:23
+msgid "Processing file..."
+msgstr "S'està processant el fitxer..."
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:69
+msgid "Choose the file to convert or drag here:"
+msgstr "Trieu el fitxer que s'ha de convertir o arrossegueu-lo ací:"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:115
+msgid "File to convert:"
+msgstr "Fitxer que s'ha de convertir:"
+
+#: ../lliurex-abies2pmb.install/usr/share/lliurex-abies2pmb/rsrc/lliurex-abies-to-pmb.ui:157
+msgid "Output folder: "
+msgstr "Carpeta d'eixida:"

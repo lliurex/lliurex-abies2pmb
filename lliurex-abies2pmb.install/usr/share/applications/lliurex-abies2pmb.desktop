@@ -1,0 +1,22 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=lliurex-abies2pmb
+Name[en]=LliureX Abies2Pmb
+Name[es]=LliureX Abies2Pmb
+Name[ca]=LliureX Abies2Pmb
+Name[ca_ES.UTF-8]=LliureX Abies2Pmb
+Name[ca_ES@valencia]=LliureX Abies2Pmb
+Comment=App to convert 
+Comment[es]=Aplicación para convertir ficheros .mdb de Abies
+Comment[ca]=Aplicació per convertir fitxers .mdb del Abies
+Comment[ca_ES@valencia]=Aplicació per convertir fitxers .mdb del Abies
+Comment[ca_ES.UTF-8@valencia]=Aplicació per convertir fitxers .mdb del Abies
+Exec=/usr/bin/lliurex-abies2pmb
+Terminal=false
+Icon=lliurex-abies2pmb
+Type=Application
+GenericName=lliurex-abies2pmb
+NoDisplay=false
+Categories=Office;
+Keywords=PMB,abies,importar,import,convert,conversion,conversió

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<component type="desktop-application">
+<id>lliurex-abies2pmb</id>
+<metadata_license>CC0-1.0</metadata_license>
+<name>lliurex-abies2pmb</name>
+<summary>Import abies tables in to PMB</summary>
+<summary xml:lang="es">Aplicación para importar bases de datos de Abies a PMB</summary>
+<summary xml:lang="ca_ES.UTF-8@valencia">Aplicació per a importar bases de dades d'Abies al PMB</summary>
+<summary xml:lang="ca_ES">Aplicació per importar bases de dades d'Abies al PMB</summary>
+<summary xml:lang="ca_ES@valencia">Aplicació per importar bases de dades d'Abies al PMB</summary>
+<description>
+<p>Lliurex-abies2pmb is a tool that allows to generate a file compatible with PMB from an Abies 2.0 database allowing us to migrate from one system to the other with a minimum amount of work.</p>
+<p xml:lang="es">Lliurex-abies2pmb es una herramienta que permite generar un fichero compatible con PMB a partir de una base de datos de Abies 2.0 permitiéndonos de esta manera migrar de un sistema al otro con una mínima cantidad de trabajo.</p>
+<p xml:lang="ca_ES.UTF-8@valencia">El Lliurex-abies2pmb és una eina que permet generar un fitxer compatible amb el PMB a partir d'una base de dades d'Abies 2.0, d'aquesta manera ens permet migrar d'un sistema a l'altre amb una mínima quantitat de treball.</p>
+<p xml:lang="ca_ES@valencia">El Lliurex-abies2pmb és una eina que permet generar un fitxer compatible amb el PMB a partir d'una base de dades d'Abies 2.0, d'aquesta manera ens permet migrar d'un sistema a l'altre amb una mínima quantitat de treball.</p>
+<p xml:lang="ca">El Lliurex-abies2pmb és una eina que permet generar un fitxer compatible amb el PMB a partir d'una base de dades d'Abies 2.0, d'aquesta manera ens permet migrar d'un sistema a l'altre amb una mínima quantitat de treball.</p>
+</description>
+<categories>
+<category>Office</category>
+</categories>
+<icon type="stock">lliurex-abies2pmb</icon>
+<provides><binary>/usr/bin/lliurex-abies2pmb</binary></provides>
+<keywords>
+<keyword>lliurex-abies2pmb</keyword>
+<keyword>LliureX</keyword>
+<keyword>Abies2Pmb</keyword>
+<keyword>Abies</keyword>
+<keyword>biblioteca</keyword>
+<keyword>PMB</keyword>
+<keyword>conversor</keyword>
+
+</keywords>
+<developer_name>Lliurex Team</developer_name>
+<name xml:lang="ca_ES.UTF-8@valencia">Lliurex-abies2pmb</name>
+</component>
