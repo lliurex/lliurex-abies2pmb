@@ -3,8 +3,8 @@ Section: admin
 Priority: optional
 Maintainer: Equipo LliureX <lliurex@gva.es>
 Uploaders: Juanra Pelegrina <juapesai@hotmail.com>, Juanma Navarro <juanma1980@gmail.com>
-Build-Depends: debhelper (>=9),llxsrchelper,llxcfg-dev
-Standards-Version: 3.9.3
+Build-Depends: debhelper (>=10),llxsrchelper,python3-poinstaller
+Standards-Version: 4.1.2
 
 Package: lliurex-abies2pmb
 Architecture: all
