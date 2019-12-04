@@ -312,44 +312,62 @@ class abies2Pmb():
 	def _processRow(self,destTable,line,transformDict):
 		pmbColumn=0
 		strInsertValues=''
+		processRow=True
 		for index in self.pmb_tables[destTable]:
-			if index!='':
-				if transformDict:
-					if index in transformDict.keys():
-						strTransform=transformDict[index]
-						self._debug("Transforming value "+str(line[index])+" index "+str(index)+" with "+strTransform)
-						line[index]=eval(strTransform)
-				tmp=str(line[index]).strip("\n")
-				#Clean tmp field
-				tmp=tmp.replace('"',' ')
-				chkFormat=True
-				if (destTable in self.formatPmbColumns):
-					if index in self.formatPmbColumns[destTable]:
-						chkFormat=False
-						if self.formatPmbColumns[destTable][index]=='string':
-							tmp=str(tmp)
-							tmp=tmp.lstrip(' ')
-							tmp=tmp.rstrip(' ')
-							tmp='"'+tmp+'"'
-						elif self.formatPmbColumns[destTable][index]=='int':
-							tmp=int(tmp)
+			try:
+				if index!='':
+					if transformDict:
+						if index in transformDict.keys():
+							if index==5:
+								if line[3]=='':
+									line[3]=1
+							if index==13:
+								if len(line)==13:
+									line.append("")
+									line.append("")
+									line.append("")
+								else:
+									if len(line)<13:
+										processRow=False
+							if processRow:			
+								strTransform=transformDict[index]
+								self._debug("Transforming value "+str(line[index])+" index "+str(index)+" with "+strTransform)
+								line[index]=eval(strTransform)
+					if processRow:
+						tmp=str(line[index]).strip("\n")
+						#Clean tmp field
+						tmp=tmp.replace('"',' ')
+						chkFormat=True
+						if (destTable in self.formatPmbColumns):
+							if index in self.formatPmbColumns[destTable]:
+								chkFormat=False
+								if self.formatPmbColumns[destTable][index]=='string':
+									tmp=str(tmp)
+									tmp=tmp.lstrip(' ')
+									tmp=tmp.rstrip(' ')
+									tmp='"'+tmp+'"'
+								elif self.formatPmbColumns[destTable][index]=='int':
+									tmp=int(tmp)
 
-				if chkFormat:
-					try:
-						int(tmp)
-					except:
-						tmp=tmp.lstrip(' ')
-						tmp=tmp.rstrip(' ')
-						tmp='"'+tmp+'"'
-						pass
-			else:
-				if (destTable in self.defaultPmbValues):
-					if pmbColumn in self.defaultPmbValues[destTable]:
-						tmp=self.defaultPmbValues[destTable][pmbColumn]
-					else:
-				 		tmp='""'	
+						if chkFormat:
+							try:
+								int(tmp)
+							except:
+								tmp=tmp.lstrip(' ')
+								tmp=tmp.rstrip(' ')
+								tmp='"'+tmp+'"'
+								pass
 				else:
-					tmp='""'
+					if (destTable in self.defaultPmbValues):
+						if pmbColumn in self.defaultPmbValues[destTable]:
+							tmp=self.defaultPmbValues[destTable][pmbColumn]
+						else:
+							tmp='""'	
+					else:
+						tmp='""'
+			except Exception as e:
+				tmp='""'
+				pass
 				
 			strInsertValues=strInsertValues+tmp+','
 			pmbColumn=pmbColumn+1
@@ -642,15 +660,19 @@ class abies2Pmb():
 
 	def _funcGetValueFromQuery(self,abiesTable,sourceTable,valueFrom,fieldTo,reqFieldIndex):
 		returnValue=''
-		valueFrom=valueFrom.strip("\n")
-		if sourceTable not in self.tableValuesDict:
-			self._loadTable(sourceTable)
-		for row in self.tableValuesDict[sourceTable]:
-				#			print ("Comparing "+str(valueFrom)+" with "+str(row[fieldTo]))
-			if valueFrom==str(row[fieldTo]).strip("\n"):
-				returnValue=row[reqFieldIndex]
-				break
-		return returnValue
+		try:
+			valueFrom=valueFrom.strip("\n")
+			if sourceTable not in self.tableValuesDict:
+				self._loadTable(sourceTable)
+			for row in self.tableValuesDict[sourceTable]:
+					#			print ("Comparing "+str(valueFrom)+" with "+str(row[fieldTo]))
+				if valueFrom==str(row[fieldTo]).strip("\n"):
+					returnValue=row[reqFieldIndex]
+					break
+			return returnValue
+		except Exception as e:
+			returnValue=''
+			return Value
 	#Transform fields functions
 
 	###
