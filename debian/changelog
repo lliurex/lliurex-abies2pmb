@@ -1,3 +1,9 @@
+lliurex-abies2pmb (1.1.20) bionic; urgency=medium
+
+  * Fixed script to convert mdb with failed records
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Wed, 04 Dec 2019 14:10:46 +0100
+
 lliurex-abies2pmb (1.1.19) bionic; urgency=medium
 
   * Initial release to bionic
