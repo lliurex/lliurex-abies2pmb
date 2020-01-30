@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 
 import gi
@@ -9,7 +9,6 @@ import copy
 import gettext
 import Core
 
-import Dialog
 import time
 import threading
 import os
@@ -87,17 +86,17 @@ class ConvertBox(Gtk.VBox):
 		self.drop_area.drag_dest_set_target_list(None)
 		self.drop_area.drag_dest_add_text_targets()
 
-    #def add_text_targets    
- 
- 	def connect_signals(self):
+	#def add_text_targets
 
- 		self.inputfile_entry.connect("file-set",self.input_file_changed)
- 		self.outputpath_entry.connect("file-set",self.output_file_changed)
- 		self.convert_button.connect("clicked",self.accept_convert_clicked)
+	def connect_signals(self):
 
- 	#def connect_signals	
+		self.inputfile_entry.connect("file-set",self.input_file_changed)
+		self.outputpath_entry.connect("file-set",self.output_file_changed)
+		self.convert_button.connect("clicked",self.accept_convert_clicked)
 
- 	def set_css_info(self):
+	#def connect_signals	
+	
+	def set_css_info(self):
 
 		self.style_provider=Gtk.CssProvider()
 
@@ -112,8 +111,8 @@ class ConvertBox(Gtk.VBox):
 		self.check_label.set_name("MSG_LABEL")
 
 	#def set_css_info	
-
- 	def input_file_changed(self,widget):
+	
+	def input_file_changed(self,widget):
 
  		entry=self.inputfile_entry.get_filename()
  		check_extension=self.commonFunc.check_extension(entry)
@@ -121,113 +120,112 @@ class ConvertBox(Gtk.VBox):
 
  		self.commonFunc.manage_outputinfo(param)
 
- 	#def input_file_changed	
- 	
- 		
- 	def output_file_changed(self,widget):
+	#def input_file_changed	
+	
+	def output_file_changed(self,widget):
 
- 		name=os.path.basename(self.inputfile_entry.get_filename()).strip(".mdb")+OUTPUT_FILE
- 		self.outputfile_label.set_text(name)	
+		name=os.path.basename(self.inputfile_entry.get_filename()).strip(".mdb")+OUTPUT_FILE
+		self.outputfile_label.set_text(name)	
 
- 	#def output_file_changed	
+	#def output_file_changed	
+	
+	def accept_convert_clicked(self,widget):
+	
+		check_outputpath=self.check_outputpath()
 
- 	def accept_convert_clicked(self,widget):
- 	
- 		check_outputpath=self.check_outputpath()
-
- 		if check_outputpath["status"]:
- 			self.convert_label.set_text("")
- 			self.convert_t=threading.Thread(target=self.convert)
+		if check_outputpath["status"]:
+			self.convert_label.set_text("")
+			self.convert_t=threading.Thread(target=self.convert)
 			self.convert_t.daemon=True
 			self.convert_t.start()
 			self.check_window.show_all()
-	 		GLib.timeout_add(100,self.pulsate_convert)
+			GLib.timeout_add(100,self.pulsate_convert)
 	
 		else:
- 			msg=self.commonFunc.get_msg(check_outputpath["code"])
- 			self.convert_label.set_text(msg)
- 			self.convert_label.set_name("MSG_ERROR_LABEL")
+			msg=self.commonFunc.get_msg(check_outputpath["code"])
+			self.convert_label.set_text(msg)
+			self.convert_label.set_name("MSG_ERROR_LABEL")
 
- 	#def accept_convert_clicked	
+	#def accept_convert_clicked	
+	
+	def check_outputpath(self):
+	
+		outputpath=self.outputpath_entry.get_filename()
+		result={}
+		result["status"]=""
+		result["code"]=""
 
- 	def check_outputpath(self):
- 	
- 		outputpath=self.outputpath_entry.get_filename()
- 		result={}
- 		result["status"]=""
- 		result["code"]=""
+		
+		if os.access(outputpath,os.W_OK):	
+			result["status"]=True
+			
+		else:
+			result["status"]=False
+			result["code"]=3
 
- 		
- 		if os.access(outputpath,os.W_OK):	
- 			result["status"]=True
- 			
- 		else:
- 			result["status"]=False
- 			result["code"]=3
+		return result	
+	
+	#def check_outputpath
+	
+	def pulsate_convert(self):
+	
+		if self.convert_t.is_alive():
+			self.check_pbar.pulse()
+			return True
 
- 		return result	
- 	
- 	#def check_outputpath
- 
- 	def pulsate_convert(self):
- 	
- 		if self.convert_t.is_alive():
- 			self.check_pbar.pulse()
- 			return True
+		else:
+			self.check_window.hide()
+			if self.result_convert["status"]:
+				self.convert_label.set_name("MSG_LABEL")
+				msg=self.commonFunc.get_msg(4)
+			else:
+				self.convert_label.set_name("MSG_ERROR_LABEL")
+				msg=self.commonFunc.get_msg(self.result_convert["code"])
 
- 		else:
- 			self.check_window.hide()
- 			if self.result_convert["status"]:
- 				self.convert_label.set_name("MSG_LABEL")
- 				msg=self.commonFunc.get_msg(4)
- 			else:
- 				self.convert_label.set_name("MSG_ERROR_LABEL")
- 				msg=self.commonFunc.get_msg(self.result_convert["code"])
+				
+			self.convert_label.set_text(msg)
+			
+			return False
 
- 				
- 			self.convert_label.set_text(msg)
- 			
- 			return False
+	#def pulsate_convert		
+	
+	def convert(self):
+		
+		inputfile=self.inputfile_entry.get_filename()
+		output_file=os.path.basename(inputfile).strip(".mdb").replace(' ' ,'_')+OUTPUT_FILE
+		output_path=os.path.join(self.outputpath_entry.get_filename(),output_file)
+		self.result_convert=self.core.abies2pmb.beginMigration(inputfile,output_path)
+		
+	#def convert
+	
+#class ConvertBox	
 
- 	#def pulsate_convert		
 
- 	def convert(self):
- 		
- 		inputfile=self.inputfile_entry.get_filename()
- 		output_file=os.path.basename(inputfile).strip(".mdb").replace(' ' ,'_')+OUTPUT_FILE
- 		output_path=os.path.join(self.outputpath_entry.get_filename(),output_file)
- 		self.result_convert=self.core.abies2pmb.beginMigration(inputfile,output_path)
- 		
- 	#def convert
- 	
- #class ConvertBox	
-
- 		
 class DropArea(Gtk.Image):
 
-    def __init__(self,drop_param):
+	def __init__(self,drop_param):
 
-    	self.drop=False
-    	self.commonFunc=CommonFunc()
-    	self.inputpath=drop_param[0]
-    	#self.origpathlabel=origpathlabel
-    	self.destpath=drop_param[1]
-    	self.outputfile_label=drop_param[2]
-    	self.convert_label=drop_param[3]
-    	self.convert_button=drop_param[4]
+		self.drop=False
+		self.commonFunc=CommonFunc()
+		self.inputpath=drop_param[0]
+		#self.origpathlabel=origpathlabel
+		self.destpath=drop_param[1]
+		self.outputfile_label=drop_param[2]
+		self.convert_label=drop_param[3]
+		self.convert_button=drop_param[4]
 
 
-    	Gtk.Image.__init__(self)
-    	Gtk.Image.set_from_file(self,DROP_FILE)
-    	self.drag_dest_set(Gtk.DestDefaults.ALL, [], DRAG_ACTION)
-       	
-       	self.connect("drag-data-received", self.on_drag_data_received)
-       	self.text=""
+		Gtk.Image.__init__(self)
+		Gtk.Image.set_from_file(self,DROP_FILE)
+		self.drag_dest_set(Gtk.DestDefaults.ALL, [], DRAG_ACTION)
 
-    #def __init__   	
+		self.connect("drag-data-received", self.on_drag_data_received)
+		self.text=""
 
-    def on_drag_data_received(self, widget, drag_context, x,y, data,info, time):
-	    
+	#def __init__   
+
+	def on_drag_data_received(self, widget, drag_context, x,y, data,info, time):
+
 		self.drop=True
 		text = data.get_text()
 		text=text.strip().split("//")
@@ -257,40 +255,40 @@ class CommonFunc():
 
 	def check_extension(self,file):
 
- 		result={}
- 		result["status"]=""
- 		result["code"]=""
- 		#file=self.inputfile_entry.get_filename()
- 		
- 		if file ==None:
- 			result["status"]=False
- 			result["code"]=0
- 			
- 		else:
- 			
-	 		try:	
-	 			file_extension=splitext(file)
+		result={}
+		result["status"]=""
+		result["code"]=""
+		#file=self.inputfile_entry.get_filename()
+		
+		if file ==None:
+			result["status"]=False
+			result["code"]=0
+			
+		else:
+			
+			try:	
+				file_extension=splitext(file)
 
-	 			if file_extension[1] != '.mdb':
-	 				result["status"]=False
-	 				result["code"]=1
-	 			else:
-	 				result["status"]=True
+				if file_extension[1] != '.mdb':
+					result["status"]=False
+					result["code"]=1
+				else:
+					result["status"]=True
 
-	 			
-	 		except:
-	 			result["status"]=False
-	 			result["code"]=2
-	 			print "Unable to detect extension" 		
- 		
- 		return result	
+				
+			except:
+				result["status"]=False
+				result["code"]=2
+				print("Unable to detect extension") 		
+		
+		return result	
 
- 	#def check_extension	
+	#def check_extension	
 
- 	def manage_outputinfo(self,param):
- 	
- 		if param[0]:
- 			path=os.path.dirname(param[2])
+	def manage_outputinfo(self,param):
+	
+		if param[0]:
+			path=os.path.dirname(param[2])
 			param[3].set_sensitive(True)
 			param[3].set_filename(path)
 			name=os.path.basename(param[2]).strip(".mdb").replace(' ','_')+OUTPUT_FILE
@@ -309,8 +307,8 @@ class CommonFunc():
 	#def manage_ouputinfo	
 
 	def get_msg(self,code):
- 	
- 		if 	code==0:
+	
+		if 	code==0:
 			msg_text=_("Error: No file upload to convert")
 		
 		elif code==1:

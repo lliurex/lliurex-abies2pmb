@@ -1,8 +1,5 @@
+#!/usr/bin/env python3
 
-#!/usr/bin/env python
-
-#import LliurexGoogleDriveManager
-#import lliurex.lliurexgdrive
 import LliurexAbiesToPmb
 import ConvertBox
 import abies2pmb
