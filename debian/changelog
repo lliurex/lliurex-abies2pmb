@@ -1,3 +1,9 @@
+lliurex-abies2pmb (1.1.21) bionic; urgency=medium
+
+  * Migrated to python3
+  
+ -- Juan Ramon Pelegrina  <juapesai@hotmail.com>  Thu, 30 Jan 2020 14:12:17 +0100
+
 lliurex-abies2pmb (1.1.20) bionic; urgency=medium
 
   * Fixed script to convert mdb with failed records
