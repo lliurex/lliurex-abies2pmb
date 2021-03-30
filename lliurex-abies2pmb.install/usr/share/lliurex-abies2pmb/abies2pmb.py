@@ -8,7 +8,7 @@ import apt_pkg
 # -*- coding: utf-8 -*-
 class abies2Pmb():
 	def __init__(self):
-		self.dbg=True
+		self.dbg=False
 		#This switch fix the position of the isbdn2 field in the table "Fondos"
 		self.fixFondos=False	
 		#Dict with relations between pmb and abies
@@ -65,16 +65,16 @@ class abies2Pmb():
 					break
 			if version==None:
 				version=pkg.version_list[0]
-			compare_version=apt_pkg.version_compare('5.0',version.ver_str)
+			compare_version=apt_pkg.version_compare('7.3',version.ver_str)
 			if compare_version>0:
-				import data4 as data
-			else:
 				import data5 as data
+			else:
+				import data7 as data
 			self.pmb_tables=data.pmb_tables
 
 
 		except Exception as e:
-			print(e)
+			print(str(e))
 			print("Couldn't determine pmb version. Aborting")
 			sys.exit(1)
 		#Numbers are the indexes of the source data table
