@@ -229,7 +229,7 @@ class abies2Pmb():
 	#def beginMigration
 
 	def exportMdb(self):
-		returnValue=None
+		returnValue=True
 		self._debug(self.mdb)
 		if os.path.exists(self.mdb):
 			try:
@@ -240,9 +240,14 @@ class abies2Pmb():
 					listTables=tables.split(' ')
 					for table in listTables:
 						if table!='':
-							try:
-								if table=="Fondos":
+							if table=="Fondos":
+								try:
 									cmdOut=subprocess.check_output(['mdb-export','-d|||',self.mdb,table],universal_newlines=True)
+								except Exception as e:
+									self._debug(e)
+									self._error(12)
+									returnValue=False
+								if returnValue:
 									tmpOut=cmdOut.split('\n')
 									newOut=[]
 									if tmpOut[0].endswith('ISBN2'):
@@ -259,19 +264,25 @@ class abies2Pmb():
 										cmdOut='\n'.join(newOut[1:])
 									else:
 										cmdOut=subprocess.check_output(['mdb-export','-H','-d|||',self.mdb,table],universal_newlines=True)
-								else:
+							else:
+								try:
 									cmdOut=subprocess.check_output(['mdb-export','-H','-d|||',self.mdb,table],universal_newlines=True)
+								except Exception as e:
+									#If there's a blob check_output will fail
+									try:
+										print("Trying to decode table {}".format(table))
+										cmdOut=subprocess.check_output(['mdb-export','-H','-d|||','-b','strip',self.mdb,table],universal_newlines=True)
+									except:
+										self._debug(e)
+										self._error(12)
+										returnValue=False
 #								if cmdOut:
-								f=open (self.workDir+table+".csv",'w')
-								f.writelines(cmdOut)
-								f.close()
-							except Exception as e:
-								print(e)
-								self._error(12)
-								returnValue=False
-
-					returnValue=True
+							f=open (self.workDir+table+".csv",'w')
+							f.writelines(cmdOut)
+							f.close()
+						returnValue=True
 			except Exception as e:
+				self._debug(e)
 				self._error(12)
 				returnValue=False
 		return returnValue
@@ -638,8 +649,11 @@ class abies2Pmb():
 				f.close()
 				for line in lines:
 					array=line.split('|||')
-					data.append(array[index])
+					if len(array)>=index:
+						data.append(array[index])
 			except Exception as e:
+				self._debug("Error processing {}".format(fileName))
+				self._debug(e)
 				self._error(16)
 		else:
 			self._error(16)
