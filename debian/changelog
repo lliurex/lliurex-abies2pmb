@@ -1,3 +1,9 @@
+lliurex-abies2pmb (1.3lliurex23) jammy; urgency=medium
+
+  * Jammy release
+
+ -- Juanma1980 <juanma1980@gmail.com>  Wed, 06 Sep 2023 11:10:13 +0200
+
 lliurex-abies2pmb (1.3) focal; urgency=medium
 
   * Strip binaries from mdb tables when present
